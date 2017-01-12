@@ -14,18 +14,93 @@ password (255)
 
 */
 
-/*
+require_once('Database.php');
 
-Ensuite tu créé le UserRepository avec toutes les meme fonctions qu'on a vu hier + une nouvelle
-
-public static function login($mail, $password)
+class User
 {
-	// va chercher tous les utilisateurs en base et regarde si il y en a un qui possède le meme mail et password
-	// si il trouve bien cet utilisateur il retourne un objet de type User et tu applique la fonction session_start() (RTFM)
-	// sinon il retourne null
+	//attributs
 
+	private $id; 
+	private $nom;
+	private $prenom;
+	private $mail;
+	private $password;
+
+	//méthodes publiques
+
+	public function setId($id)
+	{
+		$this->id = $id;
+
+		return $this;
+	}
+
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	public function setNom($nom)
+	{
+		$this->nom = mysql_real_escape_string($nom);
+
+		return $this;
+	}
+
+	public function getNom()
+	{
+		return $this->nom;
+	}
+
+	public function setPrenom($prenom)
+	{
+		$this->prenom = mysql_real_escape_string($prenom);
+
+		return $this;
+	}
+
+	public function getPrenom()
+	{
+		return $this->prenom;
+	}
+
+	public function setMail($mail)
+	{
+		$this->mail = mysql_real_escape_string($mail);
+
+		return $this;
+	}
+
+	public function getMail()
+	{
+		return $this->mail;
+	}
+
+	public function setPassword($password) 
+	{
+		$this->password = mysql_real_escape_string($password); 
+
+		return $this;
+	}
+
+	public function getPassword()
+	{
+		return $this->password;
+	}
+
+	public function saveInDatabase()
+	{
+		$pdo = Database::connect();
+		$sql = "INSERT INTO `users`(`id`, `nom`, `prenom`, `mail`, `password`) VALUES (null, '$this->nom', '$this->prenom', '$this->mail', '$this->password')";
+		$pdo->exec($sql);
+	}
 }
 
-*/
+//TESSSTTTTT POUR VERIFIER NE SOIT PAS OUTRER LOL
 
- ?>
+$test = new User; //instanciation de test
+$test->setNom('slouf')->setPrenom('andrianaivo')->setMail('totot@mel.com')->setPassword('tototest'); //parametrage des attribut de notre objet
+var_dump($test);
+$test->saveInDatabase(); //incorporation dans notre base de données
+ 
+?>
