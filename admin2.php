@@ -12,4 +12,8 @@
 
 	<p><a class="btn btn-default" href="administration.php" role="button">Créer article</a></p>
 
+  <input type="submit" value="Ajouter"> <!-- submit est la balise qui permet de valider tout le formulaire dans lequel il est-->
+
+  <a type="submit" class="btn btn-lg btn-primary" role="button">Ajouter l'article</a>
+
 	<!------------------------------------------------------------------------------------------------>
