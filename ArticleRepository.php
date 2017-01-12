@@ -13,7 +13,7 @@ class ArticleRepository
 		Database::disconnect();
 		$articles = $data->fetchAll(PDO::FETCH_CLASS, "Article");
 
-		return $articles;
+		return $articles;	
 	}
 
 	public static function getArticleById($idArticle)
