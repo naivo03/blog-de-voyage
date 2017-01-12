@@ -29,7 +29,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Articles</a></li>
-            <li><a href="#about">Administration</a></li>
+            <li><a href="administration.php">Administration</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="./">Logout <span class="sr-only">(current)</span></a></li>
