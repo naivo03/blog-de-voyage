@@ -96,11 +96,4 @@ class User
 	}
 }
 
-//TESSSTTTTT POUR VERIFIER NE SOIT PAS OUTRER LOL
-
-$test = new User; //instanciation de test
-$test->setNom('slouf')->setPrenom('andrianaivo')->setMail('totot@mel.com')->setPassword('tototest'); //parametrage des attribut de notre objet
-var_dump($test);
-$test->saveInDatabase(); //incorporation dans notre base de données
- 
 ?>
