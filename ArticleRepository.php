@@ -44,16 +44,6 @@ class ArticleRepository
 		$db = Database::disconnect(); 
 	}
 
-	public static function updateArticle($newArticle)
-	{
-		$db = Database::connect();
-		/*Syntaxe du Update*/
-		$sql = "UPDATE `articles` SET `title`='".$newArticle->getTitle()."',`content`='".$newArticle->getContent().
-		"',`date`='".$newArticle->getDate()."' WHERE id = '".$newArticle->getId()."'";
-		$db->exec($sql);
-		$db = Database::disconnect();
-	}
-
 }
 
  ?>

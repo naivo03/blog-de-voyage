@@ -23,6 +23,7 @@ class Article
 	public function setTitle($title)
 	{
 		$this->title = mysql_real_escape_string($title);
+		$this->title = htmlentities($this->title);
 
 		return $this;
 	}
@@ -35,6 +36,7 @@ class Article
 	public function setContent($content)
 	{
 		$this->content = mysql_real_escape_string($content);
+		$this->content = htmlentities($this->content);
 
 		return $this;
 	}
@@ -61,7 +63,12 @@ class Article
 
 	public function update()
 	{
-		ArticleRepository::updateArticle($this); //maj de notre objet
+		$db = Database::connect();
+		/*Syntaxe du Update*/
+		$sql = "UPDATE `articles` SET `title`='".$this->getTitle()."',`content`='".$this->getContent().
+		"',`date`='".$this->getDate()."' WHERE id = '".$this->getId()."'";
+		$db->exec($sql);
+		$db = Database::disconnect();
 	}
 
 }
