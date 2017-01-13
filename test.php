@@ -1,4 +1,11 @@
-<?php  ?>
+<?php 
 
-<a href="./">Logout <span class="sr-only">(current)</span></a>
+require_once('ArticleRepository.php');
+
+$article = ArticleRepository::getArticleById(3);
+var_dump($article);
+$article->setTitle('lol');
+$article->update();
+
+ ?>
 

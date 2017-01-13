@@ -1,6 +1,7 @@
 <?php 
 
 require_once('Database.php');
+require_once('ArticleRepository.php');
 
 class Article
 {
@@ -12,13 +13,6 @@ class Article
 	public function getId()
 	{
 		return $this->id;
-	}
-
-	public function setId($id)
-	{
-		$this->id = $id;
-
-		return $this;
 	}
 
 	public function getTitle()
@@ -58,11 +52,16 @@ class Article
 		return $this;
 	}
 
-	public function saveInDatabase()
+	public function insert()
 	{
 		$pdo = Database::connect();
 		$sql = "INSERT INTO `articles`(`id`, `title`, `content`, `date`) VALUES (null, '$this->title', '$this->content', '$this->date')";
 		$pdo->exec($sql);
+	}
+
+	public function update()
+	{
+		ArticleRepository::updateArticle($this); //maj de notre objet
 	}
 
 }
