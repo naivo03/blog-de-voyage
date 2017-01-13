@@ -1,3 +1,5 @@
+<?php session_start(); ?> <!--dois se mettre au debut de chaque page afin de verifier l'etat de la session-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,6 +16,10 @@
 
   <body>
 
+  <?php //verification de session existante
+  		if(!isset($_SESSION['userConnected']))
+   			header("location:login.html");
+   ?>
     <!-- Static navbar -->
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
@@ -32,7 +38,11 @@
             <li><a href="administration.php">Administration</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="./">Logout <span class="sr-only">(current)</span></a></li>
+            <li>
+            	<form method="POST" action="deconnexion.php">
+            		<input type="submit" value="Deconnexion" class="btn btn-lg btn-primary" role="button" >
+            	</form>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
