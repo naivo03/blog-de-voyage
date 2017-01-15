@@ -44,6 +44,17 @@ class ArticleRepository
 		$db = Database::disconnect(); 
 	}
 
+	public static function getArticleOfAPage($page)
+	{
+		$db = Database::connect();
+		$min = ($page - 1) * 6 + 1;
+		$max = $page * 6;
+		$sql = "SELECT * FROM articles LIMIT $min, $max"; //j'initialise ma commande SQL
+		$data = $db->query($sql);
+		$db = Database::disconnect();
+		return $data->fetchAll(PDO::FETCH_CLASS, "Article");
+	}
+
 }
 
  ?>

@@ -25,6 +25,7 @@ class User
 	private $prenom;
 	private $mail;
 	private $password;
+	private $typeDeCompte;
 
 	//méthodes publiques
 
@@ -88,10 +89,23 @@ class User
 		return $this->password;
 	}
 
+	public function setTypeDeCompte($typeDeCompte)
+	{
+		$this->typeDeCompte = $typeDeCompte;
+		return $this;
+	}
+
+	public function getTypeDeCompte()
+	{
+		return $this->typeDeCompte;	
+	}
+
+
 	public function saveInDatabase()
 	{
 		$pdo = Database::connect();
-		$sql = "INSERT INTO `users`(`id`, `nom`, `prenom`, `mail`, `password`) VALUES (null, '$this->nom', '$this->prenom', '$this->mail', '$this->password')";
+		$sql = "INSERT INTO `users`(`id`, `nom`, `prenom`, `mail`, `password`, `typeDeCompte`) VALUES (null, '$this->nom', '$this->prenom', '$this->mail', '$this->password', '$this->typeDeCompte')";
+		echo $sql;
 		$pdo->exec($sql);
 	}
 }

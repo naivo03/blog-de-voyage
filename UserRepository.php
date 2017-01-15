@@ -60,7 +60,7 @@ class UserRepository
 		$db = Database::connect();
 		/*Syntaxe du Update*/
 		$sql = "UPDATE `users` SET `nom`='".$newUser->getNom()."',`prenom`='".$newUser->getPrenom().
-		"',`mail`='".$newUser->getMail(). "',`password`='".$newUser->getPassword()."' WHERE id = '".$newUser->getId()."'";
+		"',`mail`='".$newUser->getMail(). "',`password`='".$newUser->getPassword(). "',`typeDeCompte`='".$newUser->getTypeDeCompte(). "'   WHERE id = '".$newUser->getId()."'";
 		$db->exec($sql);
 		$db = Database::disconnect();
 	}
@@ -76,6 +76,8 @@ class UserRepository
 			{
 				session_start();//demarrage d'une session afin de conserver les variables pendant la connexion d'un membre avec la suerglobale ---$_SESSION['nomVariable'] = valeur;----
 				//session_destroy() pour arreter la session --par exemple a creer avec un bouton deconnexion--
+				$_SESSION['typeDeCompte'] = $user->getTypeDeCompte();
+				var_dump($_SESSION['typeDecompte']);
 				return $user;
 			}
 		}

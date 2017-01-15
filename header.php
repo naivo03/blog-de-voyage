@@ -21,7 +21,8 @@
    			header("location:login.html");
    ?>
     <!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-static-top">
+    <?php require_once('couleurNavbar.php'); ?>
+    <!--<nav class="navbar navbar-default navbar-static-top">-->
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
