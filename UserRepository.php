@@ -77,7 +77,6 @@ class UserRepository
 				session_start();//demarrage d'une session afin de conserver les variables pendant la connexion d'un membre avec la suerglobale ---$_SESSION['nomVariable'] = valeur;----
 				//session_destroy() pour arreter la session --par exemple a creer avec un bouton deconnexion--
 				$_SESSION['typeDeCompte'] = $user->getTypeDeCompte();
-				var_dump($_SESSION['typeDecompte']);
 				return $user;
 			}
 		}

@@ -19,6 +19,7 @@
                     </div>
 
       			<?php endforeach; ?>
+            
         <a class="btn btn-lg btn-primary" href="articles.php?page=<?php echo $_GET['page'] -1; ?>" role="button">precedent &raquo;</a>
         <a class="btn btn-lg btn-primary"  role="button"><?php echo $_GET['page']; ?> &raquo;</a>
         <a class="btn btn-lg btn-primary" href="articles.php?page=<?php echo $_GET['page'] + 1; ?>" role="button">Suivant &raquo;</a>
