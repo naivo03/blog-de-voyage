@@ -55,6 +55,37 @@ class ArticleRepository
 		return $data->fetchAll(PDO::FETCH_CLASS, "Article");
 	}
 
+	public static function getArticlesBySearch($elementsDeRecherche)
+	{
+	
+	$articles = self::getAllArticle();
+
+
+    $idArticlesRechercher = array();
+ 
+    foreach($articles as $article)
+    {
+    
+    	$tabTitle = explode(' ', $article->getTitle());
+    	$tabContent = explode(' ', $article->getContent());
+    	//traitement de la recherche dans le titre
+    	foreach($tabTitle as $title)
+    		foreach($elementsDeRecherche as $recherche)
+    			if($title === $recherche)
+    				$idArticlesRechercher[] = $article->getId();
+    	//traitement de la recherche dans le contenu
+    	foreach($tabContent as $content)
+    		foreach($elementsDeRecherche as $recherche)
+    			if($content === $recherche)
+    				$idArticlesRechercher[] = $article->getId();
+    }
+    $idArticlesRechercher = array_unique($idArticlesRechercher);
+                        	$articles = array();
+                    	foreach ($idArticlesRechercher as $id) 
+                    		$articles[] = ArticleRepository::getArticleById($id);
+                    	return $articles;
+	}
+
 }
 
  ?>

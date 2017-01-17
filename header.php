@@ -37,7 +37,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Articles</a></li>
             <li><a href="administration.php">Administration</a></li>
-            <li><a href="recherche.php">Recherche</a></li>
+            <li><a href="recherche2.php">Recherche</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>

@@ -1,6 +1,8 @@
 <?php 
 	require_once('ArticleRepository.php');
-	if ($_POST != NULL)
+
+	if ($_POST['recherche'] != NULL)
+	{
 		$elementsDeRecherche = explode(' ', $_POST['recherche']);
 	
 
@@ -28,4 +30,7 @@
     //nettoyer idArticlesRechercher car on peut retrouver plusieur fois le mot rechercher dan un meme article
 	$idArticlesRechercher = serialize(array_unique($idArticlesRechercher));
 	header("Location: recherche.php?articlesRechercher=$idArticlesRechercher");
+	exit;
+	}
+	header("Location: recherche.php");
  ?>
