@@ -1,10 +1,10 @@
-<?php include('header.php'); ?> <!--mon header est le fichier header.php -->
+<?php require_once('header.php'); ?> <!--mon header est le fichier header.php -->
 
     <div class="container">
                        
       <!-- Main component for a primary marketing message or call to action -->
           			<?php 
-          				    include('ArticleRepository.php');
+          				    require_once('ArticleRepository.php');
                     	$articles = ArticleRepository::getArticleOfAPage($_GET['page']);
                 ?>
 

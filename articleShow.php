@@ -35,15 +35,14 @@
                     	$commentaires = CommentaireRepository::getAllCommentaire();
                 ?>
 
+                <!-- JE PENSE QUE FAIRE CA C4EST TRES TRES MOCHE!!!!!!!!!!!!!!!!!!!!-------------->
                 <?php foreach ($commentaires as $commentaire) :?>
-
-                		<div class="jumbotron" style="min-height: 100%; min-width: 100%">
-
-                       <p><?php
-                       		if($commentaire->getArticleId() === $_GET['id']) 
-								echo $commentaire->getContent(); 
-						  ?></p> <!-- syntaxe pour accede a un element d'un objet $objet->element-->
-
+                		<?php if($commentaire->getArticleId() === $_GET['id']) 
+                		{
+                			echo "<div class=\"jumbotron\" style=\"min-height: 100%; min-width: 100%\">";
+							echo "<p>" . $commentaire->getContent() . "</p>"; /* syntaxe pour accede a un element d'un objet $objet->element*/
+						}
+						?>
                     </div>
 
       			<?php endforeach; ?>
