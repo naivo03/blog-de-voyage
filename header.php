@@ -36,10 +36,10 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Articles</a></li>
-            <li><a href="administration.php">Administration</a></li>
-            <li><a href="recherche2.php">Recherche</a></li>
+            <li><a href="recherche.php">Recherche</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="backOfficeArticles.php">Back-Office</a></li>
             <li>
             	<form method="POST" action="deconnexion.php">
             		<input type="submit" value="Deconnexion" class="btn btn-lg btn-primary" role="button" >
