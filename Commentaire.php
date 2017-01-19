@@ -22,8 +22,7 @@ class Commentaire
 
 	public function setContent($content)
 	{
-		$this->content = mysql_real_escape_string($content);
-		$this->content = htmlentities($this->content);
+		$this->content = $content;
 
 		return $this;
 	}
@@ -55,14 +54,14 @@ class Commentaire
 	public function insert()
 	{
 		$pdo = Database::connect();
-		$sql = "INSERT INTO `commentaires`(`id`, `content`, `articleId`, `userId`) VALUES (null, '$this->content', '$this->articleId', '$this->userId')";
+		$sql = "INSERT INTO `commentaires`(`id`, `content`, `articleId`, `userId`) VALUES (null, '".htmlentities(mysql_real_escape_string($this->content))."', '$this->articleId', '$this->userId')";
 		$pdo->exec($sql);
 	}
 
 	public function update()
 	{
 		$db = Database::connect();
-		$sql = "UPDATE `commentaires` SET `content`='".$this->getContent()."',`articleId`='".$this->getArticleId().
+		$sql = "UPDATE `commentaires` SET `content`='".htmlentities(mysql_real_escape_string($this->getContent()))."',`articleId`='".$this->getArticleId().
 		"',`userId`='".$this->getUserId()."' WHERE id = '".$this->getId()."'";
 		$db->exec($sql);
 		$db = Database::disconnect();

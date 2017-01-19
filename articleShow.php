@@ -8,8 +8,9 @@
 			?>
 
 			<div class="jumbotron">
-				  <h1>	<?php echo $article->getTitle() ?>	</h1> <!-- Les 2 notations ('php echo' et =) se valent -->
-				  <p>		<?= $article->getContent() ?>		</p> <!-- syntaxe pour accede a un element d'un objet $objet->element-->
+				  <h1>	<?php echo nl2br($article->getTitle()) ?>	</h1> <!-- Les 2 notations ('php echo' et =) se valent -->
+          <!--je sais pas si c'est tres propre de faire ca mais il faut a l'affichage interpreter les nl en br grace a nl2br-->
+				  <p>		<?= nl2br($article->getContent()) ?>		</p> <!-- syntaxe pour accede a un element d'un objet $objet->element-->
 			</div>
 
 			<!----------------------rajout du commentaire-------------------------------------------->
@@ -39,7 +40,7 @@
                 	if($commentaire->getArticleId() === $_GET['id']) { ?>
                 			
                 			<div class="jumbotron" style="min-height: 100%; min-width: 100%">
-								<p><?= $commentaire->getContent() ?></p>
+								<p><?= nl2br($commentaire->getContent()) ?></p>
                 			</div>
 
       			<?php } // fermeture if

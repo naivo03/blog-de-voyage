@@ -47,9 +47,11 @@ class ArticleRepository
 	public static function getArticleOfAPage($page)
 	{
 		$db = Database::connect();
-		$min = ($page - 1) * 6 + 1;
-		$max = $page * 6;
-		$sql = "SELECT * FROM articles LIMIT $min, $max"; //j'initialise ma commande SQL
+		//si c'est la premiere page on doit commence par 0 car sinon on ne prend pas le premier resultat qui est defini a 0
+		//LIMIT nb1,nb2 fonctionne ainsi : nb1 = l'article par lequel on commence et nb2 = le nombre d'article limite a afficher
+		$min = ($page - 1) * 6;
+		$nbArticles = 6;
+		$sql = "SELECT * FROM articles LIMIT $min, $nbArticles"; //j'initialise ma commande SQL
 		$data = $db->query($sql);
 		$db = Database::disconnect();
 
@@ -59,33 +61,13 @@ class ArticleRepository
 	public static function getArticlesBySearch($elementsDeRecherche)
 	{
 		// pas besoin d'explode
-		$sql = "SELECT * FROM articles WHERE title LIKE '%test avec%';";
+		$db = Database::connect();
+		$sql = "SELECT * FROM articles WHERE (title LIKE '%$elementsDeRecherche%') OR (content LIKE '%$elementsDeRecherche%');";
+		$data = $db->query($sql); //articles = l'execution de la requete sql
+		$db = Database::disconnect();
+		$articles = $data->fetchAll(PDO::FETCH_CLASS, "Article");
 
-		/* à améliorer */
-	$articles = self::getAllArticle();
-    $idArticlesRechercher = array();
-	    foreach($articles as $article)
-	    	{
-	    
-	    		$tabTitle = explode(' ', $article->getTitle());
-	    		$tabContent = explode(' ', $article->getContent());
-	    		//traitement de la recherche dans le titre
-	    		foreach($tabTitle as $title)
-	    			foreach($elementsDeRecherche as $recherche)
-	    				if($title === $recherche)
-	    					$idArticlesRechercher[] = $article->getId();
-	    		//traitement de la recherche dans le contenu
-	    		foreach($tabContent as $content)
-	    			foreach($elementsDeRecherche as $recherche)
-	    				if($content === $recherche)
-	    					$idArticlesRechercher[] = $article->getId();
-	    	}
-    $idArticlesRechercher = array_unique($idArticlesRechercher);
-    $articles = array();
-    foreach ($idArticlesRechercher as $id) 
-    	$articles[] = ArticleRepository::getArticleById($id);
-                    	
-    return $articles;
+		return $articles;
 	}
 }
 

@@ -22,8 +22,7 @@ class Article
 
 	public function setTitle($title)
 	{
-		$this->title = mysql_real_escape_string($title);
-		$this->title = htmlentities($this->title);
+		$this->title = $title;
 
 		return $this;
 	}
@@ -35,8 +34,7 @@ class Article
 
 	public function setContent($content)
 	{
-		$this->content = mysql_real_escape_string($content);
-		$this->content = htmlentities($this->content);
+		$this->content = $content;
 
 		return $this;
 	}
@@ -56,8 +54,9 @@ class Article
 
 	public function insert()
 	{
+		//j'utilise htmlentities et mysql_realescape ici pour pouvoir recuperer mon contenu d'origine a l'affichage car on doit se proteger contre les injections SQL quand on modifier la table
 		$pdo = Database::connect();
-		$sql = "INSERT INTO `articles`(`id`, `title`, `content`, `date`) VALUES (null, '$this->title', '$this->content', '$this->date')";
+		$sql = "INSERT INTO `articles`(`id`, `title`, `content`, `date`) VALUES (null, '".htmlentities(mysql_real_escape_string($this->title))."', '".htmlentities(mysql_real_escape_string($this->content))."', '$this->date')";
 		$pdo->exec($sql);
 	}
 
@@ -65,7 +64,8 @@ class Article
 	{
 		$db = Database::connect();
 		/*Syntaxe du Update*/
-		$sql = "UPDATE `articles` SET `title`='".$this->getTitle()."',`content`='".$this->getContent().
+		//j'utilise htmlentities et mysql_realescape ici pour pouvoir recuperer mon contenu d'origine a l'affichage car on doit se proteger contre les injections SQL quand on modifier la table
+		$sql = "UPDATE `articles` SET `title`='".htmlentities(mysql_real_escape_string($this->getTitle()))."',`content`='".htmlentities(mysql_real_escape_string($this->getContent())).
 		"',`date`='".$this->getDate()."' WHERE id = '".$this->getId()."'";
 		$db->exec($sql);
 		$db = Database::disconnect();

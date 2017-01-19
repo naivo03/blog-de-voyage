@@ -1,3 +1,4 @@
+<?php require_once('UserRepository.php');?> <!-- on doit le mettre avnat seesion-start cat il session transmet un type User-->
 <?php session_start(); ?> <!--dois se mettre au debut de chaque page afin de verifier l'etat de la session-->
 
 <!DOCTYPE html>
@@ -39,7 +40,14 @@
             <li><a href="recherche.php">Recherche</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <!--je pense que ce n'est pas tre propre de faire ca-->
+            <?php
+              if($_SESSION['userConnected']->getTypeDeCompte() === '300')
+              {
+              ?>
             <li><a href="backOfficeArticles.php">Back-Office</a></li>
+            <?php } ?>
+
             <li>
             	<form method="POST" action="deconnexion.php">
             		<input type="submit" value="Deconnexion" class="btn btn-lg btn-primary" role="button" >

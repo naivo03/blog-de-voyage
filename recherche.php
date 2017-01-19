@@ -14,8 +14,9 @@
 	</form>
 
   <?php 
+    //isset est la fonction qui determine si une variable a ete initialiser (une variable peut etre initialiser a NULL)
     if(isset($_POST['recherche']) && $_POST['recherche'] != NULL)
-      $articles = ArticleRepository::getArticlesBySearch(explode(' ',$_POST['recherche']));
+      $articles = ArticleRepository::getArticlesBySearch($_POST['recherche']);
     else
       $articles = []; // tableau vide -> le foreach ne rentre pas dedans
    ?>

@@ -1,6 +1,6 @@
 	<?php include('header.php'); ?> <!--mon header est le fichier header.php -->
 
-	
+	<div class="container">
 	<form method="GET" action="rajoutArticle.php"> <!-- en HTML on utilise deux types de requetes HTTP: GET et POST (GET rend les données visibles car les données sont comprises dans l'URL POST rend les données masqués car elle sont dans le coeur de la requete), action est l'URL du fichier PHP dans lequel je vais envoyer ma data -->
 
     <div class="form-group">
@@ -16,5 +16,6 @@
 	<p><input type="submit" value="Ajouter l'article" class="btn btn-lg btn-primary" role="button" ></p>
 
 	</form>
+	</div>
 
 	<?php include('footer.php'); ?>

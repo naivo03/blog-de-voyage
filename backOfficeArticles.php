@@ -1,4 +1,11 @@
 <?php include('header.php'); ?>
+<?php 	require_once('ArticleRepository.php');  ?>
+<?php 	require_once('UserRepository.php');  ?>
+<?php 
+	//je ne sais pas si c'est une bonne maniere de gerer l'acces a cette page
+	if($_SESSION['userConnected']->getTypeDeCompte() != '300')
+		header("Location: error404.php");
+ ?>
 	<!--
 
 		- lister tous les articles avec des données utile a l'admin
@@ -6,12 +13,13 @@
 
 	-->
 
-<?php require_once('ArticleRepository.php'); 
-		$articles = ArticleRepository::getAllArticle();
+<?php 
+	$articles = ArticleRepository::getAllArticle();
 ?>
 
-
-		  <table>
+		<div class="container">
+		<div class="table-responsive">
+		  <table class="table table-striped" >
 		  	<thead>
 		  		<tr>
 		  			<th>ID</th>
@@ -27,14 +35,17 @@
 		  		<tr>
 		  			<td><?= $article->getId(); ?></td>
 		  			<td><?= $article->getTitle(); ?></td>
-		  			<td><?= strlen($article->getContent()) . 'lettres'; ?></td>
+		  			<td><?= strlen($article->getContent()) . ' lettres'; ?></td>
 		  			<td><?= $article->getDate(); ?></td>
 		  			<td>
-		  			<a href="<?= "modifierArticle.php?articleId=".$article->getId() ?>">Modifier</a>
-		  			<a href="<?= "supprimerArticle.php?articleId=".$article->getId() ?>" >Supprimer</a>
+		  			<a type="button" class="btn btn-success" href="<?= "modifierArticle.php?articleId=".$article->getId() ?>">Modifier</a>
+		  			<a type="button" class="btn btn-danger" href="<?= "supprimerArticle.php?articleId=".$article->getId() ?>" >Supprimer</a>
 		  			</td>
 		  		</tr>
 		  	<?php endforeach; ?>
 		  	</tbody>
 		  </table>
+		  <a type="button" class="btn btn-primary" href="ajouterArticle.php" >Ajouter un Article</a>
+		  </div>
+		  </div>
 <?php include('footer.php'); ?>
