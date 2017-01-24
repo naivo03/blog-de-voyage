@@ -1,4 +1,4 @@
-<?php require_once('UserRepository.php');?> <!-- on doit le mettre avnat seesion-start cat il session transmet un type User-->
+  <?php require_once('UserRepository.php');?> <!-- on doit le mettre avnat seesion-start cat il session transmet un type User-->
 <?php session_start(); ?> <!--dois se mettre au debut de chaque page afin de verifier l'etat de la session-->
 
 <!DOCTYPE html>
