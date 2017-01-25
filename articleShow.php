@@ -4,13 +4,16 @@
 
 			<?php
 			 	   include('ArticleRepository.php');
+           require_once('ImageRepository.php');
 			     $article = ArticleRepository::getArticleById(intval($_GET['id'])); //inval transforme string en nombre
 			?>
 
 			<div class="jumbotron">
 				  <h1>	<?php echo nl2br($article->getTitle()) ?>	</h1> <!-- Les 2 notations ('php echo' et =) se valent -->
-          <img alt="Logo" src="../Exercice/fichier/1/songoku.jpg" class="img-responsive center-block img-rounded" >
+          <?php if (ImageRepository::getImageByArticleId($article->getId())) { ?>
+          <img alt="Logo" src="<?= ImageRepository::getImageByArticleId($article->getId())->getPath(); ?>" class="img-responsive center-block img-rounded" >
           <!--je sais pas si c'est tres propre de faire ca mais il faut a l'affichage interpreter les nl en br grace a nl2br-->
+          <?php } ?>
 				  <p>		<?= nl2br($article->getContent()) ?>		</p> <!-- syntaxe pour accede a un element d'un objet $objet->element-->
 			</div>
 
