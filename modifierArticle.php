@@ -26,6 +26,22 @@
 
   	<input type="hidden" name="id" value="<?= $article->getId() ?>">
 
+      <?php 
+    /*---------------------------IMAGES DEJA PRESENTES POUR CET ARTICLE-------------------------------*/
+
+            if(ImageRepository::getImageByArticleId($article->getId()))
+            {
+              $imagesArticle = ImageRepository::getImageByArticleId($article->getId());
+              echo "<label for=\"images\">Images dans cet article :</label><br />";
+              foreach ($imagesArticle as $image)
+              {
+                echo "<p>- ". $image->getPath() . "</p>";
+              }
+            }
+
+    /*------------------------------------------------------------------------------------------------*/
+      ?>
+
      	<label for="mon_fichier">Fichier (tous formats | max. 2 Mo) :</label><br />
      	<input type="hidden" name="MAX_FILE_SIZE" value="2048576" />
      	<input type="file" name="mon_fichier" id="mon_fichier" /><br />
@@ -37,13 +53,10 @@
 	</form>
 
     <?php 
-
-    /*---------------------------INTEGRATION D4UN IMAGE---------------------------------------------------*/
+    /*---------------------------INTEGRATION D UN IMAGE---------------------------------------------------*/
 
             $maxsize = 2048576;
             $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
-
-            var_dump($_FILES);
 
             if(isset($_FILES) && $_FILES != NULL && $_FILES['mon_fichier']['size'] > 0)
                 if ($_FILES['mon_fichier']['size'] > $maxsize) 

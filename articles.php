@@ -15,11 +15,16 @@
 
                 			 <h1><?php echo nl2br($article->getTitle()) ?></h1> <!-- Les 2 notations ('php echo' et =) se valent -->
 
+                      <!--affichage de la premiere image pour l'appercu d'article-->
 
-                        <?php if (ImageRepository::getImageByArticleId($article->getId())) { ?>
-                        <img alt="Logo" src="<?= ImageRepository::getImageByArticleId($article->getId())->getPath(); ?>" class="img-responsive center-block img-thumbnail" >
+                        <?php if (ImageRepository::getImageByArticleId($article->getId())) 
+                              {
+                                $images = ImageRepository::getImageByArticleId($article->getId());
+                        ?>
+                        <img alt="Logo" src="<?= $images[0]->getPath(); ?>" class="img-responsive center-block img-thumbnail" >
                         <!--je sais pas si c'est tres propre de faire ca mais il faut a l'affichage interpreter les nl en br grace a nl2br-->
                         <?php } ?>
+                        <!------------------------------------------------------------>
 
 
                        <!--je sais pas si c'est tres propre de faire ca mais il faut a l'affichage interpreter les nl en br grace a nl2br-->

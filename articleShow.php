@@ -10,10 +10,22 @@
 
 			<div class="jumbotron">
 				  <h1>	<?php echo nl2br($article->getTitle()) ?>	</h1> <!-- Les 2 notations ('php echo' et =) se valent -->
-          <?php if (ImageRepository::getImageByArticleId($article->getId())) { ?>
-          <img alt="Logo" src="<?= ImageRepository::getImageByArticleId($article->getId())->getPath(); ?>" class="img-responsive center-block img-rounded" >
-          <!--je sais pas si c'est tres propre de faire ca mais il faut a l'affichage interpreter les nl en br grace a nl2br-->
-          <?php } ?>
+
+          
+          <!--afichage de toutes les images de l'articles-->
+          <?php 
+          if (ImageRepository::getImageByArticleId($article->getId())) 
+          {
+            $images = ImageRepository::getImageByArticleId($article->getId());
+            foreach ( $images as $image)
+            { 
+          ?>
+          <img alt="Logo" src="<?= $image->getPath(); ?>" class="img-responsive center-block img-rounded" >
+          <?php }} ?>
+          <!------------------------------------------------------------------>
+
+                        
+           <!--je sais pas si c'est tres propre de faire ca mais il faut a l'affichage interpreter les nl en br grace a nl2br-->
 				  <p>		<?= nl2br($article->getContent()) ?>		</p> <!-- syntaxe pour accede a un element d'un objet $objet->element-->
 			</div>
 
