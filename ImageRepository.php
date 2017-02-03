@@ -18,9 +18,22 @@ class ImageRepository
 		$data = $db->query($sql); //data = l'execution de la requete sql
 		$db = Database::disconnect();
 		$images = $data->fetchAll(PDO::FETCH_CLASS, "Image");
-		if (count($images) >= 1) //si j'ai recuperer un seul user avec ma requete je retourne mon objet
+		if (count($images) >= 1)
 			return $images;
-		else //si j'ai + d'un objet dans mon tableau d'objet cela signifie qu'il avait deux objet avec le meme id
+		else 
+			return null;
+	}
+
+	public static function getImageById($id)
+	{
+		$db = Database::connect();
+		$sql = "SELECT * FROM images WHERE id = $id"; //j'initialise ma commande SQL
+		$data = $db->query($sql); //data = l'execution de la requete sql
+		$db = Database::disconnect();
+		$images = $data->fetchAll(PDO::FETCH_CLASS, "Image");
+		if (count($images) == 1) 
+			return $images[0];
+		else 
 			return null;
 	}
 

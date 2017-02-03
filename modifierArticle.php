@@ -35,12 +35,17 @@
               echo "<label for=\"images\">Images dans cet article :</label><br />";
               foreach ($imagesArticle as $image)
               {
-                echo "<p>- ". $image->getPath() . "</p>";
+                echo "<p>- ". $image->getPath() .  "<a type=\"button\" class=\"btn btn-primary\" href=\"supprimerImage.php?articleId=" . $article->getId() . "&imageId=" . $image->getId() . "\" >Supprimer Image</a>" .  "</p>";
+
+
+                /*"<input type=\"submit\" value=\"Supprimer l'image\" class=\"btn\" role=\"button\" >" . "</p>";*/
               }
             }
 
-    /*------------------------------------------------------------------------------------------------*/
+    
       ?>
+
+<!------------------------------------------------------------------------------------------------------>
 
      	<label for="mon_fichier">Fichier (tous formats | max. 2 Mo) :</label><br />
      	<input type="hidden" name="MAX_FILE_SIZE" value="2048576" />
@@ -53,7 +58,7 @@
 	</form>
 
     <?php 
-    /*---------------------------INTEGRATION D UN IMAGE---------------------------------------------------*/
+    /*---------------------------INTEGRATION D UNE IMAGE------------------------------------------------*/
 
             $maxsize = 2048576;
             $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );

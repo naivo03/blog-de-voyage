@@ -4,7 +4,7 @@
 <?php 
 	//je ne sais pas si c'est une bonne maniere de gerer l'acces a cette page
 	if($_SESSION['userConnected']->getTypeDeCompte() != '300')
-		header("Location: error404.php");
+		header("Location: erreur404.php");
  ?>
 	<!--
 
