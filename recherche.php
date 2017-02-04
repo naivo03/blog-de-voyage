@@ -33,5 +33,7 @@
                     </div>
 
             <?php endforeach; ?>
+
+  </div>
     
     <?php include('footer.php'); ?>

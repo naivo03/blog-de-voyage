@@ -13,6 +13,9 @@
     <!-- Bootstrap core CSS -->
     <link href="bootstrap.css" rel="stylesheet">
 
+    <!--Placement footer fixe-->
+    <link href="sticky-footer.css" rel="stylesheet">
+
   </head>
 
   <body>

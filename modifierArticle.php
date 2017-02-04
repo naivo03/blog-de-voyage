@@ -35,10 +35,8 @@
               echo "<label for=\"images\">Images dans cet article :</label><br />";
               foreach ($imagesArticle as $image)
               {
+                //suppresion de l'image si demander par l'admin
                 echo "<p>- ". $image->getPath() .  "<a type=\"button\" class=\"btn btn-primary\" href=\"supprimerImage.php?articleId=" . $article->getId() . "&imageId=" . $image->getId() . "\" >Supprimer Image</a>" .  "</p>";
-
-
-                /*"<input type=\"submit\" value=\"Supprimer l'image\" class=\"btn\" role=\"button\" >" . "</p>";*/
               }
             }
 

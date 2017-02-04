@@ -64,5 +64,7 @@
         <a class="btn btn-lg btn-primary" href="articles.php?page=<?php echo $pagePrecedent; ?>" role="button"> &laquo; Precedent</a>
         <a class="btn btn-lg btn-primary"  role="button"><?php echo $_GET['page']; ?></a>
         <a class="btn btn-lg btn-primary" href="articles.php?page=<?php echo $_GET['page'] + 1; ?>" role="button">Suivant &raquo;</a>
+
+        </div>
     
     <?php include('footer.php'); ?>
