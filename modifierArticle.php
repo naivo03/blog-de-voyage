@@ -73,17 +73,13 @@
 
                     if ( in_array($extension_upload,$extensions_valides) )
                     { 
-                        echo "Extension correcte";
-
                         $id_membre = $_POST['titre'];
-                        echo "$id_membre<br>";
                         $nom = "images_articles/{$id_membre}.{$extension_upload}";
                         $resultat = move_uploaded_file($_FILES['mon_fichier']['tmp_name'],$nom);
                         if ($resultat)
                         {
                             $image = new Image();
                             $image->setArticleId($article->getId())->setPath($nom)->setUserId($_SESSION['userConnected']->getId())->insert();
-                            echo "Transfert réussi";
                         }
                     }
                     else
