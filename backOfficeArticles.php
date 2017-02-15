@@ -19,7 +19,7 @@
 
 		<div class="container">
 		<div class="table-responsive">
-		  <table class="table table-striped" >
+		  <table id="tabArticle" class="table table-striped" >
 		  	<thead>
 		  		<tr>
 		  			<th>ID</th>
@@ -32,14 +32,14 @@
 
 		  	<tbody>
 		  	<?php foreach ($articles as $article) : ?>
-		  		<tr>
+		  		<tr title="<?= $article->getId(); ?>">
 		  			<td><?= $article->getId(); ?></td>
 		  			<td><?= $article->getTitle(); ?></td>
 		  			<td><?= strlen($article->getContent()) . ' lettres'; ?></td>
 		  			<td><?= $article->getDate(); ?></td>
 		  			<td>
-		  			<a type="button" class="btn btn-success" href="<?= "modifierArticle.php?articleId=".$article->getId() ?>">Modifier</a>
-		  			<a type="button" class="btn btn-danger" href="<?= "supprimerArticle.php?articleId=".$article->getId() ?>" >Supprimer</a>
+		  				<a type="button" class="btn btn-success" href="<?= "modifierArticle.php?articleId=".$article->getId() ?>">Modifier</a>
+		  				<button type="button" onClick="suppArticle(<?= $article->getId() ?>, this.parentNode.parentNode.rowIndex)" class="btn btn-default">Supprimer</button>
 		  			</td>
 		  		</tr>
 		  	<?php endforeach; ?>
