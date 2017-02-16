@@ -1,7 +1,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
     <!--<footer class="footer">
       <div class="container">
         <p class="text-muted">Bienvenu sur mon blog de voyage</p>
@@ -10,14 +10,16 @@
 
     <footer class=bs-docs-footer> 
       <div class=container> 
-        <ul class=bs-docs-footer-links> 
-          <li><a href=https://github.com/naivo03>GitHub</a></li> 
-          <li><a href=https://www.linkedin.com/in/rasolofo-andrianaivo-06968231>LinkedIn</a></li> 
+        <ul class="bs-docs-footer-links text-center"> 
+          <li><a href=https://github.com/naivo03>GitHub<img src="imagesFooter/github_mini.png" class="img-responsive center-block" /></a></li> 
+          <li><a href=https://www.linkedin.com/in/rasolofo-andrianaivo-06968231>LinkedIn<img src="imagesFooter/LinkedIn_mini.png" class="img-responsive center-block" /></a></li>
+          <li><a href=https://twitter.com/NaivoRasolofo>Twitter<img src="imagesFooter/Twitter_mini.png" class="img-responsive center-block" /></a></li>
+          <li><a href=https://www.linkedin.com/in/rasolofo-andrianaivo-06968231>Instagram<img src="imagesFooter/Instagram_mini.png" class="img-responsive center-block" /></a></li> 
           <li><a href=../about/ >About</a></li> 
         </ul> 
-        <p>Designed and built with all the love in the world by <a href=https://twitter.com/mdo target=_blank>@Naivo</a>. Maintained by the <a href=https://github.com/orgs/twbs/people>core team</a> with the help of <a href=https://github.com/twbs/bootstrap/graphs/contributors>our contributors</a>.
-        </p> 
-        <p>Code licensed <a href=https://github.com/twbs/bootstrap/blob/master/LICENSE target=_blank rel=license>MIT</a>, docs <a href=https://creativecommons.org/licenses/by/3.0/ target=_blank rel=license>CC BY 3.0</a>.</p> 
+        <p>Designed and built with all the love in the world by <a href=https://twitter.com/mdo target=_blank>@Naivo</a>. 
+        </p>
+        <p>© Copyright 2017 - <a target=_blank>Slouf Blog Project </a>by Andrianaivo RASOLOFO</p>
       </div> 
     </footer>
 
